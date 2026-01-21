@@ -9,7 +9,7 @@ import { selectedProjectAtom, selectedAgentChatIdAtom } from "./features/agents/
 import { useAgentSubChatStore } from "./features/agents/stores/sub-chat-store"
 import { AgentsLayout } from "./features/layout/agents-layout"
 import {
-  AnthropicOnboardingPage,
+  ApiConfigPage,
   ApiKeyOnboardingPage,
   BillingMethodPage,
   CodexOnboardingPage,
@@ -182,18 +182,7 @@ export function App() {
     }
     syncOptOutStatus()
 
-    // Identify user if already authenticated
-    const identifyUser = async () => {
-      try {
-        const user = await window.desktopApi?.getUser()
-        if (user?.id) {
-          identify(user.id, { email: user.email, name: user.name })
-        }
-      } catch (error) {
-        console.warn("[Analytics] Failed to identify user:", error)
-      }
-    }
-    identifyUser()
+    // Note: User identification removed since we no longer require login
 
     // Cleanup on unmount
     return () => {

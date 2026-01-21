@@ -94,14 +94,14 @@ const ERROR_TOAST_CONFIG: Record<
       "Your previous chat session expired. Send your message again to start fresh.",
   },
   EXECUTABLE_NOT_FOUND: {
-    title: "Claude CLI not found",
+    title: "Claude binary not found",
     description:
-      "Install Claude Code CLI: npm install -g @anthropic-ai/claude-code",
+      "Run 'bun run claude:download' to download the Claude binary",
     action: {
       label: "Copy command",
       onClick: () =>
         navigator.clipboard.writeText(
-          "npm install -g @anthropic-ai/claude-code",
+          "bun run claude:download",
         ),
     },
   },
