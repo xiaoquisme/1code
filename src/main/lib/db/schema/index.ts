@@ -128,7 +128,18 @@ export const anthropicSettings = sqliteTable("anthropic_settings", {
   ),
 })
 
+// ============ API SETTINGS ============
+// Stores API key and custom proxy settings for direct API access
+export const apiSettings = sqliteTable("api_settings", {
+  id: text("id").primaryKey().default("default"), // Single row, always "default"
+  apiKey: text("api_key"), // Encrypted with safeStorage
+  apiHost: text("api_host").default("https://api.anthropic.com"),
+  configuredAt: integer("configured_at", { mode: "timestamp" }),
+})
+
 // ============ TYPE EXPORTS ============
+export type ApiSettings = typeof apiSettings.$inferSelect
+export type NewApiSettings = typeof apiSettings.$inferInsert
 export type Project = typeof projects.$inferSelect
 export type NewProject = typeof projects.$inferInsert
 export type Chat = typeof chats.$inferSelect

@@ -758,7 +758,7 @@ export type BillingMethod =
 
 export const billingMethodAtom = atomWithStorage<BillingMethod>(
   "onboarding:billing-method",
-  null,
+  "api-key", // Skip login by default - use API key or custom model
   undefined,
   { getOnInit: true },
 )
@@ -777,7 +777,7 @@ export const anthropicOnboardingCompletedAtom = atomWithStorage<boolean>(
 // Only relevant when billingMethod is "api-key"
 export const apiKeyOnboardingCompletedAtom = atomWithStorage<boolean>(
   "onboarding:api-key-completed",
-  false,
+  true, // Skip login by default
   undefined,
   { getOnInit: true },
 )
